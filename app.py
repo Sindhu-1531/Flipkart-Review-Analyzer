@@ -88,7 +88,7 @@ def classify_sentiment(polarity):
         return "Neutral"
 
 # Streamlit App
-st.title("🛍️ Flipkart Review Analyzer")
+st.title(" Flipkart Review Analyzer")
 st.write("Enter a Flipkart product **Review Page URL** to analyze its reviews and check if it is a **Good Buy or Bad Buy**!")
 
 url = st.text_input("Paste Flipkart Product Review URL:")
@@ -97,12 +97,12 @@ if st.button("Analyze"):
     if not url:
         st.warning("Please enter a valid Flipkart Review URL.")
     else:
-        with st.spinner("Scraping reviews... Please wait ⏳"):
+        with st.spinner("Scraping reviews... Please wait "):
             csv_file = scrape_flipkart_reviews(url, num_pages=2)
 
         df = pd.read_csv(csv_file)
 
-        st.success(f"✅ Scraped {len(df)} reviews.")
+        st.success(f" Scraped {len(df)} reviews.")
 
         # Run sentiment analysis
         df["Polarity"] = df["Review"].apply(analyze_sentiment)
@@ -114,18 +114,18 @@ if st.button("Analyze"):
         neutral_count = (df["Sentiment"] == "Neutral").sum()
         total_reviews = len(df)
 
-        st.write(f"✅ Total Reviews: {total_reviews}")
-        st.write(f"✅ Positive Reviews: {positive_count} ({positive_count/total_reviews*100:.1f}%)")
-        st.write(f"❌ Negative Reviews: {negative_count} ({negative_count/total_reviews*100:.1f}%)")
-        st.write(f"😐 Neutral Reviews: {neutral_count} ({neutral_count/total_reviews*100:.1f}%)")
+        st.write(f" Total Reviews: {total_reviews}")
+        st.write(f" Positive Reviews: {positive_count} ({positive_count/total_reviews*100:.1f}%)")
+        st.write(f" Negative Reviews: {negative_count} ({negative_count/total_reviews*100:.1f}%)")
+        st.write(f" Neutral Reviews: {neutral_count} ({neutral_count/total_reviews*100:.1f}%)")
 
         # Final Verdict
         if positive_count / total_reviews >= 0.6:
-            st.success("🎉 Final Verdict: GOOD BUY ✅")
+            st.success(" Final Verdict: GOOD BUY ")
         elif negative_count / total_reviews >= 0.4:
-            st.error("⚠️ Final Verdict: BAD BUY ❌")
+            st.error(" Final Verdict: BAD BUY ")
         else:
-            st.info("🤔 Final Verdict: NEUTRAL / MIXED")
+            st.info(" Final Verdict: NEUTRAL / MIXED")
 
         # Show full dataframe
         with st.expander("See All Reviews"):
@@ -133,5 +133,5 @@ if st.button("Analyze"):
 
         # Save updated CSV
         df.to_csv("flipkart_reviews_with_sentiment.csv", index=False)
-        st.info("📄 Detailed results saved to `flipkart_reviews_with_sentiment.csv`.")
+        st.info(" Detailed results saved to `flipkart_reviews_with_sentiment.csv`.")
 

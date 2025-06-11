@@ -33,23 +33,23 @@ def main():
 
     total_reviews = len(df)
 
-    print(f"\n✅ Total Reviews: {total_reviews}")
-    print(f"✅ Positive Reviews: {positive_count} ({positive_count/total_reviews*100:.1f}%)")
-    print(f"❌ Negative Reviews: {negative_count} ({negative_count/total_reviews*100:.1f}%)")
-    print(f"😐 Neutral Reviews: {neutral_count} ({neutral_count/total_reviews*100:.1f}%)")
+    print(f"\n Total Reviews: {total_reviews}")
+    print(f" Positive Reviews: {positive_count} ({positive_count/total_reviews*100:.1f}%)")
+    print(f" Negative Reviews: {negative_count} ({negative_count/total_reviews*100:.1f}%)")
+    print(f" Neutral Reviews: {neutral_count} ({neutral_count/total_reviews*100:.1f}%)")
 
     # Simple Good Buy Decision
     if positive_count / total_reviews >= 0.6:
-        print("\n🎉 Final Verdict: GOOD BUY ✅")
+        print("\n Final Verdict: GOOD BUY ")
     elif negative_count / total_reviews >= 0.4:
-        print("\n⚠️ Final Verdict: BAD BUY ❌")
+        print("\n Final Verdict: BAD BUY ")
     else:
-        print("\n🤔 Final Verdict: NEUTRAL / MIXED")
+        print("\n Final Verdict: NEUTRAL / MIXED")
 
     # Save updated CSV with sentiment columns
     output_file = "flipkart_reviews_with_sentiment.csv"
     df.to_csv(output_file, index=False)
-    print(f"\n✅ Detailed results saved to {output_file}")
+    print(f"\n Detailed results saved to {output_file}")
 
 if __name__ == "__main__":
     main()

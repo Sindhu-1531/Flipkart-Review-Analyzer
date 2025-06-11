@@ -17,7 +17,7 @@ def scrape_flipkart_reviews(url, max_pages=5):
         current_page = 1
 
         while current_page <= max_pages:
-            print(f"\n📄 Scraping Page {current_page} ...")
+            print(f"\n Scraping Page {current_page} ...")
 
             review_blocks = page.query_selector_all("div.col.EPCmJX.Ma1fCG")
 
@@ -73,13 +73,13 @@ def save_reviews_to_csv(reviews, filename="flipkart_reviews.csv"):
         dict_writer = csv.DictWriter(output_file, fieldnames=keys)
         dict_writer.writeheader()
         dict_writer.writerows(reviews)
-    print(f"\n✅ Reviews saved to {filename}")
+    print(f"\n Reviews saved to {filename}")
 
 if __name__ == "__main__":
     url = input("Enter Flipkart product review page URL: ")
     try:
         reviews = scrape_flipkart_reviews(url, max_pages=5)  # You can change max_pages if needed
-        print(f"\n✅ Total reviews extracted: {len(reviews)}")
+        print(f"\n Total reviews extracted: {len(reviews)}")
 
         for i, review in enumerate(reviews, start=1):
             print(f"\n--- Review {i} ---")
@@ -91,4 +91,4 @@ if __name__ == "__main__":
         save_reviews_to_csv(reviews)
 
     except Exception as e:
-        print(f"\n❌ Error while scraping: {e}")
+        print(f"\n Error while scraping: {e}")
