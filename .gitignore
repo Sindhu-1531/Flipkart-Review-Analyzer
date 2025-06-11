@@ -1,0 +1,16 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+
+# Output files
+output/
+flipkart_reviews.csv
+flipkart_reviews_with_sentiment.csv
+
+# Virtual environments
+venv/
+.env
+
+# System files
+.DS_Store
